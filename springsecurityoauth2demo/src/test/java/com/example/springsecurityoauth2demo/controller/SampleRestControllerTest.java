@@ -18,15 +18,12 @@ class SampleRestControllerTest {
 	@Autowired
 	private MockMvc mockMvc;
 
-	@MockBean
-	private JwtDecoder jwtDecoder;
-
 	@Test
 	@WithMockUser(roles = "access")
 	void accessロールを持つリクエストは許可される() throws Exception {
 		mockMvc.perform(get("/"))
-			.andExpect(status().isOk())
-			.andExpect(content().string(containsString("hello")));
+				.andExpect(status().isOk())
+				.andExpect(content().string(containsString("hello")));
 	}
 
 }
